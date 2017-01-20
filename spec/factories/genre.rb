@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :genre do
-    name 'Scifi'
+    sequence :name do |n|
+      "#{Faker::Lorem.word}#{n}"
+    end
 
     factory :genre_with_books do
       transient do

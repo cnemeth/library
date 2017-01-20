@@ -4,7 +4,7 @@ class GenresController < ApplicationController
   # GET /genres
   # GET /genres.json
   def index
-    @genres = Genre.all
+    @genres = Genre.alpha
   end
 
   # GET /genres/1
@@ -69,6 +69,6 @@ class GenresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def genre_params
-      params.require(:genre).permit(:books)
+      params.require(:genre).permit(:name)
     end
 end
