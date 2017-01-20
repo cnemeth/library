@@ -12,28 +12,28 @@
 
 ActiveRecord::Schema.define(version: 20170119000007) do
 
-  create_table "authors", force: :cascade do |t|
+  create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "authors_products", id: false, force: :cascade do |t|
-    t.integer "author_id",  null: false
-    t.integer "product_id", null: false
-    t.index ["author_id"], name: "index_authors_products_on_author_id"
-    t.index [nil], name: "index_authors_products_on_book_id"
+  create_table "authors_books", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "author_id", null: false
+    t.integer "book_id",   null: false
+    t.index ["author_id"], name: "index_authors_books_on_author_id", using: :btree
+    t.index ["book_id"], name: "index_authors_books_on_book_id", using: :btree
   end
 
-  create_table "books", force: :cascade do |t|
+  create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "genre_id"
   end
 
-  create_table "genres", force: :cascade do |t|
+  create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "books"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
